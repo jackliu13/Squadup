@@ -34,6 +34,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //Actually set the UIMapObject in the storyboard
         mapObject.delegate = self
         mapObject.mapType = MKMapType.hybrid //MKMapType.satellite works too -> probably shitty? outdated?
+        mapObject.isScrollEnabled = true //Allows user to scroll through map
+        mapObject.isRotateEnabled = true //Allows user to rotate map screen
+        mapObject.isZoomEnabled = true //Allows user to zoom into map screen
         mapObject.showsUserLocation = true //Shows the blinking dot -> maybe we can customize it so friends have different colors to differentiate them
     }
     
