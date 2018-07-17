@@ -49,6 +49,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //Sets the region of focus
         let region = MKCoordinateRegionMake(mapObject.userLocation.coordinate, mapSpan)
         //let region = MKCoordinateRegionMakeWithDistance(mapObject.userLocation.coordinate, 500, 500) //This is an alternate method using distance?
+        // ^ method above probably doesn't work because it uses userLocation.coordinate and that contains an error because the coordinate variable was removed from our swift version
         self.mapObject.setRegion(region, animated: false)
         
         
