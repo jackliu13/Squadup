@@ -13,6 +13,7 @@
 		04D3689620FD9EE500518348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689520FD9EE500518348 /* Assets.xcassets */; };
 		04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689720FD9EE500518348 /* LaunchScreen.storyboard */; };
 		04D368A120FDB55700518348 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D368A020FDB55700518348 /* MapViewController.swift */; };
+		9E58EAE84D101CB660C8BBBD /* Pods_Squadup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8B39DCED7432F6697006D0 /* Pods_Squadup.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		04D3689820FD9EE500518348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D3689A20FD9EE500518348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D368A020FDB55700518348 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		08C91ECE2E9C722E48112856 /* Pods-Squadup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.debug.xcconfig"; sourceTree = "<group>"; };
+		1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.release.xcconfig"; sourceTree = "<group>"; };
+		1C8B39DCED7432F6697006D0 /* Pods_Squadup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Squadup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E58EAE84D101CB660C8BBBD /* Pods_Squadup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				04D3688D20FD9EE300518348 /* Squadup */,
 				04D3688C20FD9EE300518348 /* Products */,
+				84F6CE8AB73A274CD6326552 /* Pods */,
+				498FD997D2BD422C3E8A5844 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = Squadup;
 			sourceTree = "<group>";
 		};
+		498FD997D2BD422C3E8A5844 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C8B39DCED7432F6697006D0 /* Pods_Squadup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84F6CE8AB73A274CD6326552 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08C91ECE2E9C722E48112856 /* Pods-Squadup.debug.xcconfig */,
+				1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04D3689D20FD9EE500518348 /* Build configuration list for PBXNativeTarget "Squadup" */;
 			buildPhases = (
+				8226E7898D810A69DD6217F3 /* [CP] Check Pods Manifest.lock */,
 				04D3688720FD9EE300518348 /* Sources */,
 				04D3688820FD9EE300518348 /* Frameworks */,
 				04D3688920FD9EE300518348 /* Resources */,
+				32516EC6D6665016B5525FA0 /* [CP] Embed Pods Frameworks */,
+				9ADD7A93386B3CEA354964D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32516EC6D6665016B5525FA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Squadup/Pods-Squadup-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Squadup/Pods-Squadup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8226E7898D810A69DD6217F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Squadup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9ADD7A93386B3CEA354964D8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Squadup/Pods-Squadup-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Squadup/Pods-Squadup-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04D3688720FD9EE300518348 /* Sources */ = {
@@ -282,6 +372,7 @@
 		};
 		04D3689E20FD9EE500518348 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C91ECE2E9C722E48112856 /* Pods-Squadup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +390,7 @@
 		};
 		04D3689F20FD9EE500518348 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

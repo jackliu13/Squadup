@@ -1,0 +1,6 @@
+framework module Pods_Squadup {
+  umbrella header "Pods-Squadup-umbrella.h"
+
+  export *
+  module * { export * }
+}
