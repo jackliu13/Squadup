@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseUI
 
 class LoginViewController: UIViewController {
 
     
-    @IBOutlet weak var directMapButton: UIButton!
+//    @IBOutlet weak var directMapButton: UIButton!
     
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +28,24 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBAction func actionViewMap(_ sender: UIButton) {
-        performSegue(withIdentifier: "showMap", sender: self)
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        guard let authUI = FUIAuth.defaultAuthUI()
+            else { return }
+        
+        authUI.delegate = self
+        
+        let authViewController = authUI.authViewController()
+        present(authViewController, animated: true)
+
     }
     
 
+    
+}
+
+extension LoginViewController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        print("handle user signup or login")
+    }
 }
 
