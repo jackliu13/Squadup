@@ -38,7 +38,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         
         database.child("location").child("longitude").observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot.value)
+            print(snapshot)
         }
         database.child("location").observeSingleEvent(of: .value) { (snapshot) in
             let dict = snapshot.value as? [String:AnyObject] ?? [:]
