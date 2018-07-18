@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
+import Firebase
+import FirebaseStorage
 
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -21,8 +23,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
     
+    let database = Database.database().reference()
+    
+    
+    @objc func updateUserCoordinates(){
+        let userLat = mapObject.userLocation.coordinate.latitude
+        database.child("location").child("latitude").setValue(userLat)
+        
+        let userLon = mapObject.userLocation.coordinate.longitude
+        database.child("location").child("longitude").setValue(userLon)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        database.child("location").child("longitude").observeSingleEvent(of: .value) { (snapshot) in
+            print(snapshot)
+        }
+        database.child("location").observeSingleEvent(of: .value) { (snapshot) in
+            let dict = snapshot.value as? [String:AnyObject] ?? [:]
+            for i in dict {
+                print(i.key)
+                print(i.value)
+            }
+        }
         
         //handles the general location manager
         manager = CLLocationManager()
@@ -41,21 +65,49 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapObject.showsUserLocation = true //Shows the blinking dot -> maybe we can customize it so friends have different colors to differentiate them
         
         //Converts address string to a coordinate variable
-//        let geocoder = CLGeocoder()
-//        geocoder.geocodeAddressString("your address") {
-//            placemarks, error in
-//            let placemark = placemarks?.first
-//            let lat = placemark?.location?.coordinate.latitude
-//            let lon = placemark?.location?.coordinate.longitude
-//            var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat!, lon!)
-//            print("Lat: \(lat), Lon: \(lon)")
-//        }
-//        let destinationAnnotation = MKPointAnnotation()
-//        destinationAnnotation.coordinate = destinationAddress
-//        destinationAnnotation.title = "SquadUpSpot"
-//        self.mapObject.addAnnotation(destinationAnnotation)
-//
-//        let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        let geocoder = CLGeocoder()
+        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
+        geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let lat = placemark?.location?.coordinate.latitude
+            let lon = placemark?.location?.coordinate.longitude
+            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
+            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+        }
+        let destinationAnnotation = MKPointAnnotation()
+        destinationAnnotation.coordinate = destinationAddress
+        
+        self.mapObject.addAnnotation(destinationAnnotation)
+
+        //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        
+       
+        
+        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
+            //placeholder for changing the annotation of the other user
+            print("user has moved")
+        })
+        
+        //Constant update of location with use of a timer
+        var gameTimer: Timer!
+        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
+        //stops the timer
+        //gameTimer.invalidate()
+
+        
+        
+        
+        
+        //If a user is added or deleted it will change ...
+//        locationRef.observe(.childAdded , with: {(snap: DataSnapshot) -> Void in
+//            //placeholder for changing the annotation of the other user
+//            print("user was added")
+//        })
+//        locationRef.observe(.childRemoved, with: {(snap: DataSnapshot) -> Void in
+//            //placeholder for changing the annotation of the other user
+//            print("user was deleted")
+//        })
         
     }
     
@@ -90,16 +142,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     //Pretty cool pathing shit that I stole
-    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
-        
-        if overlay is MKPolyline {
-            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.red
-            polylineRenderer.lineWidth = 4
-            return polylineRenderer
-        }
-        return nil
-    }
+//    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+//
+//        if overlay is MKPolyline {
+//            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+//            polylineRenderer.strokeColor = UIColor.red
+//            polylineRenderer.lineWidth = 4
+//            return polylineRenderer
+//        }
+//        return nil
+//    }
 }
 
 

@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var directMapButton: UIButton!
     
-    @IBOutlet weak var directUsernameButton: UIButton!
+//    @IBOutlet weak var directMapButton: UIButton!
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -48,11 +48,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBAction func actionGoToUsername(_ sender: Any) {
-        self.performSegue(withIdentifier: "toUsername", sender: self)
-    }
-    
-    
 
     
 }
@@ -68,13 +63,16 @@ extension LoginViewController: FUIAuthDelegate {
             else { return }
         
         let userRef = Database.database().reference().child("users").child(user.uid)
-        userRef.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
-            if let user = User(snapshot: snapshot) {
-                print("Welcome back, \(user.username).")
-            } else {
-                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
-            }
-        })
+            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let userDict = snapshot.value as? [String: Any] {
+                    print("User already exists \(userDict.debugDescription).")
+                    
+                } else {
+                    print("new user!")
+                }
+            })
+        
+        print("handle user signup or login")
     }
 }
 
