@@ -133,14 +133,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mb-3T-eOZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Create Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mb-3T-eOZ">
                                 <rect key="frame" x="65" y="103" width="244" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Register a username so your friends can find you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIA-Om-sug">
-                                <rect key="frame" x="70" y="147" width="235" height="41.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register a username so your friends can find you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIA-Om-sug">
+                                <rect key="frame" x="70" y="147" width="235" height="47"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -158,12 +158,10 @@
                             <constraint firstItem="GIA-Om-sug" firstAttribute="top" secondItem="1Mb-3T-eOZ" secondAttribute="bottom" constant="8" id="FJr-H1-AYP"/>
                             <constraint firstItem="NFQ-oy-hHz" firstAttribute="trailing" secondItem="oQC-34-ghU" secondAttribute="trailing" constant="35" id="Koz-Sc-H7Y"/>
                             <constraint firstItem="NFQ-oy-hHz" firstAttribute="trailing" secondItem="GIA-Om-sug" secondAttribute="trailing" constant="70" id="OcB-Fz-R6e"/>
-                            <constraint firstItem="oQC-34-ghU" firstAttribute="top" secondItem="GIA-Om-sug" secondAttribute="bottom" constant="105.5" id="VDr-Ld-Uh6"/>
                             <constraint firstItem="NFQ-oy-hHz" firstAttribute="trailing" secondItem="1Mb-3T-eOZ" secondAttribute="trailing" constant="66" id="XL0-2C-8mi"/>
                             <constraint firstItem="GIA-Om-sug" firstAttribute="leading" secondItem="NFQ-oy-hHz" secondAttribute="leading" constant="70" id="Z9C-jj-UQ4"/>
                             <constraint firstItem="Iyj-Rj-4r4" firstAttribute="top" secondItem="oQC-34-ghU" secondAttribute="bottom" constant="25" id="aGn-3S-7mP"/>
                             <constraint firstItem="Iyj-Rj-4r4" firstAttribute="leading" secondItem="NFQ-oy-hHz" secondAttribute="leading" constant="35" id="dlN-ao-iLj"/>
-                            <constraint firstItem="oQC-34-ghU" firstAttribute="top" secondItem="GIA-Om-sug" secondAttribute="bottom" constant="100" id="oow-0C-mpU"/>
                             <constraint firstItem="1Mb-3T-eOZ" firstAttribute="top" secondItem="NFQ-oy-hHz" secondAttribute="top" constant="83" id="ro0-Jd-eNo"/>
                             <constraint firstItem="GIA-Om-sug" firstAttribute="top" secondItem="1Mb-3T-eOZ" secondAttribute="bottom" constant="8" id="snQ-EM-gGn"/>
                             <constraint firstItem="NFQ-oy-hHz" firstAttribute="bottom" secondItem="Iyj-Rj-4r4" secondAttribute="bottom" constant="258" id="ugh-iC-Pnw"/>
