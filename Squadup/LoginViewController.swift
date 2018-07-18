@@ -15,6 +15,7 @@ typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var directMapButton: UIButton!
     
 //    @IBOutlet weak var directMapButton: UIButton!
     
@@ -41,6 +42,11 @@ class LoginViewController: UIViewController {
         present(authViewController, animated: true)
 
     }
+    
+    @IBAction func actionGoToMap(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "showMap", sender: self)
+    }
+    
     
 
     
