@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70E-Vv-o4Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="diG-tT-trJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -90,17 +90,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3sh-Kv-3aD"/>
                     </view>
+                    <navigationItem key="navigationItem" id="IeO-0P-CJD"/>
                     <connections>
                         <outlet property="directMapButton" destination="93e-b9-no0" id="nga-jP-fDc"/>
                         <outlet property="directUsernameButton" destination="vsk-o6-0Jy" id="O1T-3G-4rm"/>
                         <outlet property="loginButton" destination="Xy3-MZ-o4g" id="qEc-BD-eUI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showMap" id="PmO-KN-Wvr"/>
-                        <segue destination="v8b-8k-aed" kind="show" identifier="toUsername" id="BYG-qD-fee"/>
+                        <segue destination="v8b-8k-aed" kind="show" identifier="toCreateUsername" id="x1M-sH-YwZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIM-VO-UPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-554.39999999999998" y="119.1904047976012"/>
+            <point key="canvasLocation" x="384.80000000000001" y="119.1904047976012"/>
         </scene>
         <!--CreateUsernameViewController-->
         <scene sceneID="nEl-aW-a7y">
@@ -123,8 +124,11 @@
                                 <state key="normal" title="Create">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="v8b-8k-aed" eventType="touchUpInside" id="olH-YO-xH4"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-34-ghU">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="usernameTextField" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-34-ghU">
                                 <rect key="frame" x="35" y="294" width="305" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="dOD-aw-bjx"/>
@@ -169,10 +173,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NFQ-oy-hHz"/>
                     </view>
+                    <connections>
+                        <outlet property="usernameTextField" destination="oQC-34-ghU" id="JoP-bd-KCL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6a9-rs-Eu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461.60000000000002" y="390.85457271364322"/>
+            <point key="canvasLocation" x="1400.8" y="390.85457271364322"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -209,7 +216,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="452" y="-356"/>
+            <point key="canvasLocation" x="1391.2" y="-356.67166416791605"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eHY-89-duJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="diG-tT-trJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XkV-NI-XYf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="70E-Vv-o4Z" kind="relationship" relationship="rootViewController" id="nJH-8B-ZEJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mW7-tu-2bt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-554.39999999999998" y="119.1904047976012"/>
         </scene>
     </scenes>
     <resources>
