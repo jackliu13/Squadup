@@ -41,21 +41,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapObject.showsUserLocation = true //Shows the blinking dot -> maybe we can customize it so friends have different colors to differentiate them
         
         //Converts address string to a coordinate variable
-//        let geocoder = CLGeocoder()
-//        geocoder.geocodeAddressString("your address") {
-//            placemarks, error in
-//            let placemark = placemarks?.first
-//            let lat = placemark?.location?.coordinate.latitude
-//            let lon = placemark?.location?.coordinate.longitude
-//            var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat!, lon!)
-//            print("Lat: \(lat), Lon: \(lon)")
-//        }
-//        let destinationAnnotation = MKPointAnnotation()
-//        destinationAnnotation.coordinate = destinationAddress
-//        destinationAnnotation.title = "SquadUpSpot"
-//        self.mapObject.addAnnotation(destinationAnnotation)
-//
-//        let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        let geocoder = CLGeocoder()
+        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
+        geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let lat = placemark?.location?.coordinate.latitude
+            let lon = placemark?.location?.coordinate.longitude
+            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
+            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+        }
+        let destinationAnnotation = MKPointAnnotation()
+        destinationAnnotation.coordinate = destinationAddress
+        
+        self.mapObject.addAnnotation(destinationAnnotation)
+
+        let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
         
     }
     
