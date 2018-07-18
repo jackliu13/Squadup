@@ -61,10 +61,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let database = Database.database().reference()
         let locationRef = database.child("location")
+        
         locationRef.observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
             //placeholder for changing the annotation of the other user
             print("user has moved")
         })
+        
+        func updateUserCoordinates(){
+            let userLat = mapObject.userLocation.coordinate.latitude
+            locationRef.child("latitude").setValue(userLat)
+            
+            let userLon = mapObject.userLocation.coordinate.longitude
+            locationRef.child("longitude").setValue(userLon)
+        }
+        
+        //Constant update of location with use of a timer
+        var gameTimer: Timer!
+        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
+        //stops the timer
+        //gameTimer.invalidate()
+
+        
+        
         
         
         //If a user is added or deleted it will change ...
