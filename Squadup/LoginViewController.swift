@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var directMapButton: UIButton!
     
-//    @IBOutlet weak var directMapButton: UIButton!
+    @IBOutlet weak var directUsernameButton: UIButton!
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -45,6 +45,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func actionGoToMap(_ sender: UIButton) {
         self.performSegue(withIdentifier: "showMap", sender: self)
+    }
+    
+    
+    @IBAction func actionGoToUsername(_ sender: Any) {
+        self.performSegue(withIdentifier: "toUsername", sender: self)
     }
     
     

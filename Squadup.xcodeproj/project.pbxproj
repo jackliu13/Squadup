@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040130D020FFA5430011F4C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040130CF20FFA5430011F4C6 /* User.swift */; };
+		040130D220FFB3EB0011F4C6 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */; };
 		04D3688F20FD9EE400518348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3688E20FD9EE400518348 /* AppDelegate.swift */; };
 		04D3689120FD9EE400518348 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3689020FD9EE400518348 /* LoginViewController.swift */; };
 		04D3689420FD9EE400518348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689220FD9EE400518348 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		040130CF20FFA5430011F4C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		04D3688B20FD9EE300518348 /* Squadup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Squadup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D3688E20FD9EE400518348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D3689020FD9EE400518348 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				04D3689A20FD9EE500518348 /* Info.plist */,
 				04D368A020FDB55700518348 /* MapViewController.swift */,
 				04FEA41420FEAE6800CE23C1 /* GoogleService-Info.plist */,
+				040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */,
 			);
 			path = Squadup;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				040130D020FFA5430011F4C6 /* User.swift in Sources */,
 				04D3689120FD9EE400518348 /* LoginViewController.swift in Sources */,
 				04D368A120FDB55700518348 /* MapViewController.swift in Sources */,
+				040130D220FFB3EB0011F4C6 /* CreateUsernameViewController.swift in Sources */,
 				04D3688F20FD9EE400518348 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
