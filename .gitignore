@@ -68,4 +68,8 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 .DS_Store
 .DS_Store
+<<<<<<< HEAD
+=======
+GoogleService-Info.plist
+>>>>>>> master
 Squadup.xcodeproj/project.pbxproj
