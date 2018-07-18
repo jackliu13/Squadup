@@ -11,10 +11,11 @@ import UIKit
 import CoreLocation
 import MapKit
 
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapObject: MKMapView!
-    @IBOutlet weak var mapLabel: UILabel!
+    @IBOutlet weak var searchHere: UITextField!
     
     
     var manager:CLLocationManager!
@@ -34,13 +35,33 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //Actually set the UIMapObject in the storyboard
         mapObject.delegate = self
         mapObject.mapType = MKMapType.hybrid //MKMapType.satellite works too -> probably shitty? outdated?
+        mapObject.isScrollEnabled = true //Allows user to scroll through map
+        mapObject.isRotateEnabled = true //Allows user to rotate map screen
+        mapObject.isZoomEnabled = true //Allows user to zoom into map screen
         mapObject.showsUserLocation = true //Shows the blinking dot -> maybe we can customize it so friends have different colors to differentiate them
+        
+        //Converts address string to a coordinate variable
+//        let geocoder = CLGeocoder()
+//        geocoder.geocodeAddressString("your address") {
+//            placemarks, error in
+//            let placemark = placemarks?.first
+//            let lat = placemark?.location?.coordinate.latitude
+//            let lon = placemark?.location?.coordinate.longitude
+//            var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat!, lon!)
+//            print("Lat: \(lat), Lon: \(lon)")
+//        }
+//        let destinationAnnotation = MKPointAnnotation()
+//        destinationAnnotation.coordinate = destinationAddress
+//        destinationAnnotation.title = "SquadUpSpot"
+//        self.mapObject.addAnnotation(destinationAnnotation)
+//
+//        let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        
     }
     
     
     //this updates everything when location changes
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        mapLabel.text = "\(locations[0])" //Report data
         myLocations.append(locations[0] as CLLocation)
         
         
