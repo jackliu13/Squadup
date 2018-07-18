@@ -56,7 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         self.mapObject.addAnnotation(destinationAnnotation)
 
-        let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
         
     }
     
@@ -91,16 +91,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     //Pretty cool pathing shit that I stole
-    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
-        
-        if overlay is MKPolyline {
-            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.red
-            polylineRenderer.lineWidth = 4
-            return polylineRenderer
-        }
-        return nil
-    }
+//    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+//
+//        if overlay is MKPolyline {
+//            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+//            polylineRenderer.strokeColor = UIColor.red
+//            polylineRenderer.lineWidth = 4
+//            return polylineRenderer
+//        }
+//        return nil
+//    }
 }
 
 
