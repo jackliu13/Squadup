@@ -13,6 +13,7 @@ import MapKit
 import Firebase
 import FirebaseStorage
 
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapObject: MKMapView!
@@ -22,8 +23,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
     
+    let database = Database.database().reference()
+    
+    
+    @objc func updateUserCoordinates(){
+        let userLat = mapObject.userLocation.coordinate.latitude
+        database.child("location").child("latitude").setValue(userLat)
+        
+        let userLon = mapObject.userLocation.coordinate.longitude
+        database.child("location").child("longitude").setValue(userLon)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        database.child("location").observeSingleEvent(of: .value) { (snapshot) in
+            let dict = snapshot.value as? [String:AnyObject] ?? [:]
+            for i in dict {
+                print(i.key)
+                print(i.value)
+            }
+        }
         
         //handles the general location manager
         manager = CLLocationManager()
@@ -59,21 +79,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
         
-        let database = Database.database().reference()
-        let locationRef = database.child("location")
+       
         
-        locationRef.observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
+        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
             //placeholder for changing the annotation of the other user
             print("user has moved")
         })
-        
-        func updateUserCoordinates(){
-            let userLat = mapObject.userLocation.coordinate.latitude
-            locationRef.child("latitude").setValue(userLat)
-            
-            let userLon = mapObject.userLocation.coordinate.longitude
-            locationRef.child("longitude").setValue(userLon)
-        }
         
         //Constant update of location with use of a timer
         var gameTimer: Timer!
