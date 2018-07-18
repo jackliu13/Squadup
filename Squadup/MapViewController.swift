@@ -5,6 +5,7 @@
 //  Created by Jack Liu on 7/16/18.
 //  Copyright © 2018 Jack Liu. All rights reserved.
 //
+
 import Foundation
 import UIKit
 import CoreLocation
@@ -21,10 +22,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
-    
+    //Reference to the database
     let database = Database.database().reference()
     
-    
+    //function that updates the users coordinates in firebase. We will try to access these coordinates with a separate function
     @objc func updateUserCoordinates(){
         let userLat = mapObject.userLocation.coordinate.latitude
         database.child("location").child("latitude").setValue(userLat)
@@ -33,19 +34,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         database.child("location").child("longitude").setValue(userLon)
     }
     
+    func fetchUser(){
+        Database.database().reference().child("users").observe(.childAdded, with: {(snapshot) in
+            print(snapshot)
+        })
+    }
+    
+    
+    
+    //function that fetches the friends coordinates in firebase.
+    //    var friendsLat: CLLocationDegrees
+    //    var friendsLon: CLLocationDegrees
+    //    @objc func fetchFriendsCoordinates(){
+    //
+    //    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        database.child("location").child("longitude").observeSingleEvent(of: .value) { (snapshot) in
-            print(snapshot)
-        }
-        database.child("location").observeSingleEvent(of: .value) { (snapshot) in
-            let dict = snapshot.value as? [String:AnyObject] ?? [:]
-            for i in dict {
-                print(i.key)
-                print(i.value)
-            }
-        }
         
         //handles the general location manager
         manager = CLLocationManager()
@@ -88,24 +115,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             print("user has moved")
         })
         
+        
         //Constant update of location with use of a timer
         var gameTimer: Timer!
         gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
         //stops the timer
         //gameTimer.invalidate()
-        
-        
-        
-        
-        //If a user is added or deleted it will change ...
-        //        locationRef.observe(.childAdded , with: {(snap: DataSnapshot) -> Void in
-        //            //placeholder for changing the annotation of the other user
-        //            print("user was added")
-        //        })
-        //        locationRef.observe(.childRemoved, with: {(snap: DataSnapshot) -> Void in
-        //            //placeholder for changing the annotation of the other user
-        //            print("user was deleted")
-        //        })
         
     }
     
@@ -114,18 +129,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(_ manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         myLocations.append(locations[0] as CLLocation)
         
-        
         //Changes the zoom/view of the map -> can play around with a little with the zoom to look good
         let mapSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         //Sets the region of focus
         let region = MKCoordinateRegionMake(mapObject.userLocation.coordinate, mapSpan)
         //let region = MKCoordinateRegionMakeWithDistance(mapObject.userLocation.coordinate, 500, 500) //This is an alternate method using distance?
         self.mapObject.setRegion(region, animated: false)
-        
-        
-        
-        
-        
         
         //need at least 2 data entries (locations) to setup drawing the line
         if (myLocations.count > 1){
@@ -139,15 +148,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             mapObject.add(polyline)
         }
     }
-    //Pretty cool pathing shit that I stole
-    //    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
-    //
-    //        if overlay is MKPolyline {
-    //            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-    //            polylineRenderer.strokeColor = UIColor.red
-    //            polylineRenderer.lineWidth = 4
-    //            return polylineRenderer
-    //        }
-    //        return nil
-    //    }
 }
+
+
