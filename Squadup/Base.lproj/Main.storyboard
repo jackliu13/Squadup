@@ -189,8 +189,5 @@
         <namedColor name="tcHotPink">
             <color red="0.98000001910000001" green="0.32499998810000003" blue="0.52200001480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="tcHotPink">
-            <color red="0.98000001910000001" green="0.32499998810000003" blue="0.52200001480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
