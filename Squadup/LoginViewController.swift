@@ -5,7 +5,6 @@
 //  Created by Jack Liu on 7/16/18.
 //  Copyright © 2018 Jack Liu. All rights reserved.
 //
-
 import UIKit
 import FirebaseAuth
 import FirebaseUI
@@ -14,7 +13,7 @@ import FirebaseDatabase
 typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var directMapButton: UIButton!
     
     @IBOutlet weak var directUsernameButton: UIButton!
@@ -25,7 +24,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,7 +39,7 @@ class LoginViewController: UIViewController {
         
         let authViewController = authUI.authViewController()
         present(authViewController, animated: true)
-
+        
     }
     
     @IBAction func actionGoToMap(_ sender: UIButton) {
@@ -53,7 +52,7 @@ class LoginViewController: UIViewController {
     }
     
     
-
+    
     
 }
 
@@ -77,4 +76,3 @@ extension LoginViewController: FUIAuthDelegate {
         })
     }
 }
-
