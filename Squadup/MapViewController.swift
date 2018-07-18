@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
-
+import Firebase
+import FirebaseStorage
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -57,6 +58,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.mapObject.addAnnotation(destinationAnnotation)
 
         //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        
+        let database = Database.database().reference()
+        let locationRef = database.child("location")
+        locationRef.observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
+            //placeholder for changing the annotation of the other user
+            print("user has moved")
+        })
+        
+        
+        //If a user is added or deleted it will change ...
+//        locationRef.observe(.childAdded , with: {(snap: DataSnapshot) -> Void in
+//            //placeholder for changing the annotation of the other user
+//            print("user was added")
+//        })
+//        locationRef.observe(.childRemoved, with: {(snap: DataSnapshot) -> Void in
+//            //placeholder for changing the annotation of the other user
+//            print("user was deleted")
+//        })
         
     }
     
