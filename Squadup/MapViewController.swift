@@ -105,15 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
         }
         
-        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        mapObject.setRegion(region, animated: true)
-        let friendAnnotation = MKPointAnnotation()
-        friendAnnotation.coordinate = location
-        friendAnnotation.title = "YOUR FRIEND"
-        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
-        mapObject.addAnnotation(friendAnnotation)
+       
         
         //Constant update of location with use of a timer
         var gameTimer: Timer!
@@ -123,6 +115,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         
+    }
+    
+    
+    func viewFriendAnnotation(){
+        //let friendUsername = database.child("users").child(userID).child("username")
+        
+        
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapObject.setRegion(region, animated: true)
+        let friendAnnotation = MKPointAnnotation()
+        friendAnnotation.coordinate = location
+        friendAnnotation.title = "YOUR FRIEND"
+        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
+        mapObject.addAnnotation(friendAnnotation)
     }
     
     
