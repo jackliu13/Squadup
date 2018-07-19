@@ -95,21 +95,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         //Converts address string to a coordinate variable
         let geocoder = CLGeocoder()
-        var destinationAddress: MKCoordinateSpan = MKCoordinateSpanMake(21.28277, -157.829444)
+        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
         geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
             placemarks, error in
             let placemark = placemarks?.first
             let lat = placemark?.location?.coordinate.latitude
             let lon = placemark?.location?.coordinate.longitude
-            destinationAddress = MKCoordinateSpanMake (lat!, lon!)
+            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
             print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
         }
-        let destinationAnnotation = MKPointAnnotation()
         
-        self.mapObject.addAnnotation(destinationAnnotation)
-        
-        
-        var friendAnnotation: MKAnnotation
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapObject.setRegion(region, animated: true)
+        let friendAnnotation = MKPointAnnotation()
+        friendAnnotation.coordinate = location
+        friendAnnotation.title = "YOUR FRIEND"
+        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
+        mapObject.addAnnotation(friendAnnotation) 
         
         
         
