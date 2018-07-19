@@ -16,7 +16,8 @@
 		04D3689620FD9EE500518348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689520FD9EE500518348 /* Assets.xcassets */; };
 		04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689720FD9EE500518348 /* LaunchScreen.storyboard */; };
 		5A96CD038E2E2AE2D923966D /* Pods_Squadup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */; };
-		B82A28D3210006D100F992E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A28D2210006D100F992E1 /* GoogleService-Info.plist */; };
+		B82A28D7210061D900F992E1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A28D6210061D900F992E1 /* UserService.swift */; };
+		B82A28DD2100F7A400F992E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B82A28DC2100F7A400F992E1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		08C91ECE2E9C722E48112856 /* Pods-Squadup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.debug.xcconfig"; sourceTree = "<group>"; };
 		1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.release.xcconfig"; sourceTree = "<group>"; };
 		AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Squadup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B82A28D2210006D100F992E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B82A28D6210061D900F992E1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B82A28DC2100F7A400F992E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,16 +79,17 @@
 		04D3688D20FD9EE300518348 /* Squadup */ = {
 			isa = PBXGroup;
 			children = (
+				B82A28DC2100F7A400F992E1 /* GoogleService-Info.plist */,
+				04D3689A20FD9EE500518348 /* Info.plist */,
+				B82A28D42100619600F992E1 /* Services */,
 				040130CE20FFA4F30011F4C6 /* Models */,
 				04D3688E20FD9EE400518348 /* AppDelegate.swift */,
 				04D3689020FD9EE400518348 /* LoginViewController.swift */,
 				04D3689220FD9EE400518348 /* Main.storyboard */,
 				04D3689520FD9EE500518348 /* Assets.xcassets */,
 				04D3689720FD9EE500518348 /* LaunchScreen.storyboard */,
-				04D3689A20FD9EE500518348 /* Info.plist */,
 				040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */,
 				040130D720FFF2320011F4C6 /* MapViewController.swift */,
-				B82A28D2210006D100F992E1 /* GoogleService-Info.plist */,
 			);
 			path = Squadup;
 			sourceTree = "<group>";
@@ -106,6 +109,15 @@
 				1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B82A28D42100619600F992E1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B82A28D6210061D900F992E1 /* UserService.swift */,
+			);
+			name = Services;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */,
-				B82A28D3210006D100F992E1 /* GoogleService-Info.plist in Resources */,
+				B82A28DD2100F7A400F992E1 /* GoogleService-Info.plist in Resources */,
 				04D3689620FD9EE500518348 /* Assets.xcassets in Resources */,
 				04D3689420FD9EE400518348 /* Main.storyboard in Resources */,
 			);
@@ -248,6 +260,7 @@
 			files = (
 				040130D020FFA5430011F4C6 /* User.swift in Sources */,
 				040130D820FFF2320011F4C6 /* MapViewController.swift in Sources */,
+				B82A28D7210061D900F992E1 /* UserService.swift in Sources */,
 				04D3689120FD9EE400518348 /* LoginViewController.swift in Sources */,
 				040130D220FFB3EB0011F4C6 /* CreateUsernameViewController.swift in Sources */,
 				04D3688F20FD9EE400518348 /* AppDelegate.swift in Sources */,
