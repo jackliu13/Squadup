@@ -70,6 +70,7 @@ fastlane/test_output
 .DS_Store
 <<<<<<< HEAD
 =======
-Squadup/GoogleService-Info.plist
+*GoogleService-Info.plist
 >>>>>>> master
+*GoogleService-Info.plist
 Squadup/GoogleService-Info.plist
