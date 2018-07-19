@@ -60,13 +60,12 @@ extension AppDelegate {
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
             User.setCurrent(user)
-            initialViewController = UIStoryboard.initialViewController(for: .main)
+            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
         } else {
-            initialViewController = UIStoryboard.initialViewController(for: .login)
+            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController")
         }
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }
 }
-

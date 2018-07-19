@@ -28,10 +28,10 @@ class CreateUsernameViewController: UIViewController {
             User.setCurrent(user, writeToUserDefaults: true)
             let storyboard = UIStoryboard(name: "Main", bundle: .main)
             
-            if let initialViewController = storyboard.instantiateInitialViewController() {
-                self.view.window?.rootViewController = initialViewController
-                self.view.window?.makeKeyAndVisible()
-            }
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController")
+            self.view.window?.rootViewController = initialViewController
+            self.view.window?.makeKeyAndVisible()
+            
         }
         
         
