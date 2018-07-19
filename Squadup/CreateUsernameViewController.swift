@@ -34,6 +34,19 @@ class CreateUsernameViewController: UIViewController {
             
         }
         
+        //Create firebase database entry : Initializes username and lat/long
+//        let database = Database.database().reference()
+//        let databaseusername = username
+//         let latitude = 1
+//        let longitude = 1
+//        print("latitude")
+//        print("longitude")
+        
+//        let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
+//                                          "longitude" : longitude as AnyObject,
+//                                          "username" : username as AnyObject]
+//        database.child("users").childByAutoId().setValue(user)
+
         
 //        // 2
 //        let userAttrs = ["username": username]
