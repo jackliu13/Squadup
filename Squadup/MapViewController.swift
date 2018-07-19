@@ -24,14 +24,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var myLocations: [CLLocation] = []
     //Reference to the database
     let database = Database.database().reference()
-    
+    let userID = Auth.auth().currentUser!.uid
     //function that updates the users coordinates in firebase. We will try to access these coordinates with a separate function
     @objc func updateUserCoordinates(){
+        
         let userLat = mapObject.userLocation.coordinate.latitude
-        database.child("location").child("latitude").setValue(userLat)
+        database.child("users").child(userID).child("latitude").setValue(userLat)
         
         let userLon = mapObject.userLocation.coordinate.longitude
-        database.child("location").child("longitude").setValue(userLon)
+        database.child("users").child(userID).child("longitude").setValue(userLon)
     }
     
     func fetchUser(){
@@ -81,7 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
-        users()
+//        users()
         
         
         //Actually set the UIMapObject in the storyboard
@@ -113,14 +114,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         friendAnnotation.title = "YOUR FRIEND"
         friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
         mapObject.addAnnotation(friendAnnotation)
-        
-        
-        
-        //        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
-        //            //placeholder for changing the annotation of the other user
-        //            print("user has moved")
-        //        })
-        
         
         //Constant update of location with use of a timer
         var gameTimer: Timer!
@@ -157,16 +150,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func users(){
-        let latitude = 0
-        let longitude = 0
-        
-        let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
-                                          "longitude" : longitude as AnyObject,]
-        let databaseReference = Database.database().reference()
-        
-        databaseReference.child("users").childByAutoId().setValue(user)
-    }
+//    func users(){
+//        let latitude = 0
+//        let longitude = 0
+//
+//        let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
+//                                          "longitude" : longitude as AnyObject,]
+//        let databaseReference = Database.database().reference()
+//
+//        databaseReference.child("users").childByAutoId().setValue(user)
+//    }
 }
 
 
