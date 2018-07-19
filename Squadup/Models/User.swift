@@ -15,7 +15,7 @@ class User {
     
     let uid: String
     let username: String
-    
+    private static var _current: User?
     // MARK: - Init
     
     init(uid: String, username: String) {
@@ -32,7 +32,22 @@ class User {
         self.username = username
     }
     
+    static var current: User {
+        // 3
+        guard let currentUser = _current else {
+            fatalError("Error: current user doesn't exist")
+        }
+        
+        // 4
+        return currentUser
+    }
     
+    // MARK: - Class Methods
+    
+    // 5
+    static func setCurrent(_ user: User) {
+        _current = user
+    }
     
     
     
