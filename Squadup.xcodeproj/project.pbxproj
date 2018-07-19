@@ -10,12 +10,12 @@
 		040130D020FFA5430011F4C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040130CF20FFA5430011F4C6 /* User.swift */; };
 		040130D220FFB3EB0011F4C6 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */; };
 		040130D820FFF2320011F4C6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040130D720FFF2320011F4C6 /* MapViewController.swift */; };
-		044CBE832101296600E57608 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044CBE822101296600E57608 /* GoogleService-Info.plist */; };
 		04D3688F20FD9EE400518348 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3688E20FD9EE400518348 /* AppDelegate.swift */; };
 		04D3689120FD9EE400518348 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3689020FD9EE400518348 /* LoginViewController.swift */; };
 		04D3689420FD9EE400518348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689220FD9EE400518348 /* Main.storyboard */; };
 		04D3689620FD9EE500518348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689520FD9EE500518348 /* Assets.xcassets */; };
 		04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689720FD9EE500518348 /* LaunchScreen.storyboard */; };
+		2F99FF5721013E9800EC5D7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F99FF5621013E9800EC5D7A /* GoogleService-Info.plist */; };
 		5A96CD038E2E2AE2D923966D /* Pods_Squadup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */; };
 		B82A28D7210061D900F992E1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A28D6210061D900F992E1 /* UserService.swift */; };
 		B82A28E02100FC9100F992E1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A28DF2100FC9100F992E1 /* Constants.swift */; };
@@ -25,7 +25,6 @@
 		040130CF20FFA5430011F4C6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		040130D720FFF2320011F4C6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		044CBE822101296600E57608 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04D3688B20FD9EE300518348 /* Squadup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Squadup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D3688E20FD9EE400518348 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D3689020FD9EE400518348 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +34,7 @@
 		04D3689A20FD9EE500518348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08C91ECE2E9C722E48112856 /* Pods-Squadup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.debug.xcconfig"; sourceTree = "<group>"; };
 		1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.release.xcconfig"; sourceTree = "<group>"; };
+		2F99FF5621013E9800EC5D7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Squadup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82A28D6210061D900F992E1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B82A28DF2100FC9100F992E1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				04D3689720FD9EE500518348 /* LaunchScreen.storyboard */,
 				040130D120FFB3EB0011F4C6 /* CreateUsernameViewController.swift */,
 				040130D720FFF2320011F4C6 /* MapViewController.swift */,
-				044CBE822101296600E57608 /* GoogleService-Info.plist */,
+				2F99FF5621013E9800EC5D7A /* GoogleService-Info.plist */,
 			);
 			path = Squadup;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */,
-				044CBE832101296600E57608 /* GoogleService-Info.plist in Resources */,
+				2F99FF5721013E9800EC5D7A /* GoogleService-Info.plist in Resources */,
 				04D3689620FD9EE500518348 /* Assets.xcassets in Resources */,
 				04D3689420FD9EE400518348 /* Main.storyboard in Resources */,
 			);

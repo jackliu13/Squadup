@@ -74,3 +74,4 @@ fastlane/test_output
 >>>>>>> master
 *GoogleService-Info.plist
 Squadup/GoogleService-Info.plist
+Squadup.xcodeproj/project.pbxproj
