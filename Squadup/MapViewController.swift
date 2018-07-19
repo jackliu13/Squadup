@@ -76,9 +76,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         
         
-        
-        
-        
         //This is for hiding the search bar
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
@@ -138,35 +135,52 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
-    @IBOutlet weak var searchFriendsBar: UITextField!
     
-    func viewFriendAnnotation(){
-        let friendUsername = searchFriendsBar.text
-        
-        
-        //forloop searching
-        let uid: String
-        database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
-            for temp in snapshot.childSnapshot(forPath: "users").children {
-                if let username = temp as? String {
-                    if let isEqual = (friendUsername == temp.child("username")){
-                        
-                    }
+    @IBAction func searchEntered(_ sender: Any) {
+        func viewFriendAnnotation(){
+            let friendUsername = searchFriendsBar.text
+            
+            
+            //forloop searching
+            let uid: String
+            database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
+                
+                var users = [User]()
+                for temp in snapshot.childSnapshot(forPath: "users").children {
+                    
+                    var user = User(snapshot: temp as! DataSnapshot)
+                    users.append(user!)
                 }
                 
-            }
-        });
-        
-        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        mapObject.setRegion(region, animated: true)
-        let friendAnnotation = MKPointAnnotation()
-        friendAnnotation.coordinate = location
-        friendAnnotation.title = "YOUR FRIEND"
-        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
-        mapObject.addAnnotation(friendAnnotation)
+                let userFound = users.filter({ (user) -> Bool in
+                    user.username == self.searchFriendsBar.text
+                })
+                
+                if userFound.count == 0{
+                    //didn't find any
+                }
+                else{
+                    //found some
+                }
+                
+                
+                
+            });
+            
+            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+            mapObject.setRegion(region, animated: true)
+            let friendAnnotation = MKPointAnnotation()
+            friendAnnotation.coordinate = location
+            friendAnnotation.title = "YOUR FRIEND"
+            friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
+            mapObject.addAnnotation(friendAnnotation)
+        }
     }
+    @IBOutlet weak var searchFriendsBar: UITextField!
+    
+    
     
     
     //this updates everything when location changes
