@@ -158,13 +158,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func users(){
-        let username = ""
         let latitude = 0
         let longitude = 0
         
         let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
-                                          "longitude" : longitude as AnyObject,
-                                          "username" : username as AnyObject]
+                                          "longitude" : longitude as AnyObject,]
         let databaseReference = Database.database().reference()
         
         databaseReference.child("users").childByAutoId().setValue(user)
