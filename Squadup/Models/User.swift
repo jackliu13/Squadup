@@ -10,7 +10,7 @@ import Foundation
 import FirebaseDatabase.FIRDataSnapshot
 
 class User {
-    
+    //
     // MARK: - Properties
     
     let uid: String
