@@ -92,28 +92,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         //Converts address string to a coordinate variable
         let geocoder = CLGeocoder()
-        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
+        var destinationAddress: MKCoordinateSpan = MKCoordinateSpanMake(21.28277, -157.829444)
         geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
             placemarks, error in
             let placemark = placemarks?.first
             let lat = placemark?.location?.coordinate.latitude
             let lon = placemark?.location?.coordinate.longitude
-            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
+            destinationAddress = MKCoordinateSpanMake (lat!, lon!)
             print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
         }
         let destinationAnnotation = MKPointAnnotation()
-        destinationAnnotation.coordinate = destinationAddress
         
         self.mapObject.addAnnotation(destinationAnnotation)
         
-        //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
+        
+        var friendAnnotation: MKAnnotation 
         
         
         
-        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
-            //placeholder for changing the annotation of the other user
-            print("user has moved")
-        })
+//        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
+//            //placeholder for changing the annotation of the other user
+//            print("user has moved")
+//        })
         
         
         //Constant update of location with use of a timer
