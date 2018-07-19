@@ -138,10 +138,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    @IBOutlet weak var searchFriendsBar: UITextField!
     
     func viewFriendAnnotation(){
-        //let friendUsername = database.child("users").child(userID).child("username")
+        let friendUsername = searchFriendsBar.text
         
+        
+        //forloop searching
+        let uid: String
+        database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
+            for temp in snapshot.childSnapshot(forPath: "users").children {
+                if let username = temp as? String {
+                    if let isEqual = (friendUsername == temp.child("username")){
+                        
+                    }
+                }
+                
+            }
+        });
         
         let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
