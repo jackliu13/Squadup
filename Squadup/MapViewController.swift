@@ -81,6 +81,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
+        users()
+        
         
         //Actually set the UIMapObject in the storyboard
         mapObject.delegate = self
@@ -101,19 +103,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
             print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
         }
-        let destinationAnnotation = MKPointAnnotation()
-        destinationAnnotation.coordinate = destinationAddress
         
-        self.mapObject.addAnnotation(destinationAnnotation)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapObject.setRegion(region, animated: true)
+        let friendAnnotation = MKPointAnnotation()
+        friendAnnotation.coordinate = location
+        friendAnnotation.title = "YOUR FRIEND"
+        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
+        mapObject.addAnnotation(friendAnnotation)
         
-        //let pathToDestination: MKAnnotation = MKAnnotationView() as! MKAnnotation
         
         
-        
-        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
-            //placeholder for changing the annotation of the other user
-            print("user has moved")
-        })
+        //        database.child("location").observe(.childChanged, with: {(snap: DataSnapshot) -> Void in
+        //            //placeholder for changing the annotation of the other user
+        //            print("user has moved")
+        //        })
         
         
         //Constant update of location with use of a timer
@@ -121,6 +127,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
         //stops the timer
         //gameTimer.invalidate()
+        
+        
         
     }
     
@@ -147,6 +155,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let polyline = MKPolyline(coordinates: &a, count: a.count)
             mapObject.add(polyline)
         }
+    }
+    
+    func users(){
+        let username = ""
+        let latitude = 0
+        let longitude = 0
+        
+        let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
+                                          "longitude" : longitude as AnyObject,
+                                          "username" : username as AnyObject]
+        let databaseReference = Database.database().reference()
+        
+        databaseReference.child("users").childByAutoId().setValue(user)
     }
 }
 

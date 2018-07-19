@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="diG-tT-trJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70E-Vv-o4Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--LoginViewController-->
         <scene sceneID="azh-Nq-ut3">
             <objects>
-                <viewController title="LoginViewController" id="70E-Vv-o4Z" customClass="LoginViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="70E-Vv-o4Z" customClass="LoginViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifc-1X-q2k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +106,7 @@
         <!--CreateUsernameViewController-->
         <scene sceneID="nEl-aW-a7y">
             <objects>
-                <viewController id="v8b-8k-aed" userLabel="CreateUsernameViewController" customClass="CreateUsernameViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateUsernameViewController" id="v8b-8k-aed" userLabel="CreateUsernameViewController" customClass="CreateUsernameViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yqr-1D-AXs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
         <!--MapViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" title="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Squadup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

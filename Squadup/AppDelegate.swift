@@ -19,15 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        
-        if let initialViewController = storyboard.instantiateInitialViewController() {
-            window?.rootViewController = initialViewController
-            window?.makeKeyAndVisible()
+        configureInitialRootViewController(for: window)
+        return true
+
         }
         
-        return true
-    }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -54,3 +51,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    func configureInitialRootViewController(for window: UIWindow?) {
+        let defaults = UserDefaults.standard
+        let initialViewController: UIViewController
+        
+        
+        if let _ = Auth.auth().currentUser,
+            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+            let user = try? JSONDecoder().decode(User.self, from: userData) {
+            User.setCurrent(user)
+            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController")
+        } else {
+            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
+        }
+        
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        
+//
+//        if let _ = Auth.auth().currentUser,
+//            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+//            let user = try? JSONDecoder().decode(User.self, from: userData) {
+//            User.setCurrent(user)
+//            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
+//        } else {
+//            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController")
+//        }
+//
+//        window?.rootViewController = initialViewController
+//        window?.makeKeyAndVisible()
+    }
+}
