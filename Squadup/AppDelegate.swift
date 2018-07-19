@@ -56,16 +56,30 @@ extension AppDelegate {
         let defaults = UserDefaults.standard
         let initialViewController: UIViewController
         
+        
         if let _ = Auth.auth().currentUser,
             let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
             let user = try? JSONDecoder().decode(User.self, from: userData) {
             User.setCurrent(user)
-            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
-        } else {
             initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController")
+        } else {
+            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
         }
         
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
+        
+//
+//        if let _ = Auth.auth().currentUser,
+//            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+//            let user = try? JSONDecoder().decode(User.self, from: userData) {
+//            User.setCurrent(user)
+//            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginViewController")
+//        } else {
+//            initialViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController")
+//        }
+//
+//        window?.rootViewController = initialViewController
+//        window?.makeKeyAndVisible()
     }
 }
