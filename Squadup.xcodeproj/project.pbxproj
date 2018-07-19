@@ -17,6 +17,7 @@
 		04D3689920FD9EE500518348 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D3689720FD9EE500518348 /* LaunchScreen.storyboard */; };
 		5A96CD038E2E2AE2D923966D /* Pods_Squadup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */; };
 		D11B7F7820FFFA86009AF5BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D11B7F7720FFFA86009AF5BD /* GoogleService-Info.plist */; };
+		D11B7F7A2100F8FC009AF5BD /* UsersLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11B7F792100F8FC009AF5BD /* UsersLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1C321D8B362BA8C7CA84F02A /* Pods-Squadup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Squadup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Squadup/Pods-Squadup.release.xcconfig"; sourceTree = "<group>"; };
 		AD89E2B6FC242DAE1702662E /* Pods_Squadup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Squadup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11B7F7720FFFA86009AF5BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D11B7F792100F8FC009AF5BD /* UsersLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				040130CF20FFA5430011F4C6 /* User.swift */,
+				D11B7F792100F8FC009AF5BD /* UsersLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				040130D020FFA5430011F4C6 /* User.swift in Sources */,
 				040130D820FFF2320011F4C6 /* MapViewController.swift in Sources */,
 				04D3689120FD9EE400518348 /* LoginViewController.swift in Sources */,
+				D11B7F7A2100F8FC009AF5BD /* UsersLocation.swift in Sources */,
 				040130D220FFB3EB0011F4C6 /* CreateUsernameViewController.swift in Sources */,
 				04D3688F20FD9EE400518348 /* AppDelegate.swift in Sources */,
 			);
