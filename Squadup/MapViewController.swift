@@ -74,6 +74,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
+        
+        //This is for hiding the search bar
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //handles the general location manager
         manager = CLLocationManager()
         manager.delegate = self
