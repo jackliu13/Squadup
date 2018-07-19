@@ -11,6 +11,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import Firebase
+
 import FirebaseStorage
 
 
@@ -81,6 +82,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
+        users()
+        
         
         //Actually set the UIMapObject in the storyboard
         mapObject.delegate = self
@@ -106,7 +109,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.mapObject.addAnnotation(destinationAnnotation)
         
         
-        var friendAnnotation: MKAnnotation 
+        var friendAnnotation: MKAnnotation
         
         
         
@@ -121,6 +124,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
         //stops the timer
         //gameTimer.invalidate()
+        
+        
         
     }
     
@@ -147,6 +152,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let polyline = MKPolyline(coordinates: &a, count: a.count)
             mapObject.add(polyline)
         }
+    }
+    
+    func users(){
+        let username = ""
+        let latitude = 0
+        let longitude = 0
+        
+        let user: [String : AnyObject] = ["latitude" : latitude as AnyObject,
+                                          "longitude" : longitude as AnyObject,
+                                          "username" : username as AnyObject]
+        let databaseReference = Database.database().reference()
+        
+        databaseReference.child("users").childByAutoId().setValue(user)
     }
 }
 
