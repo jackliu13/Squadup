@@ -128,7 +128,7 @@
                                     <action selector="nextButtonTapped:" destination="v8b-8k-aed" eventType="touchUpInside" id="olH-YO-xH4"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-34-ghU">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type username here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oQC-34-ghU">
                                 <rect key="frame" x="35" y="294" width="305" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="dOD-aw-bjx"/>
@@ -194,7 +194,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j4C-aD-LiB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBe-9w-LEb">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Friend's username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBe-9w-LEb">
                                 <rect key="frame" x="37" y="44" width="301" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -216,6 +216,7 @@
                     </view>
                     <connections>
                         <outlet property="mapObject" destination="j4C-aD-LiB" id="47D-3U-1P4"/>
+                        <outlet property="searchFriendsBar" destination="kBe-9w-LEb" id="w36-Gk-2iD"/>
                         <outlet property="searchHere" destination="kBe-9w-LEb" id="fXc-Vd-qWd"/>
                     </connections>
                 </viewController>
