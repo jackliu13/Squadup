@@ -61,7 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             })
             
             if friendFound.count == 0{
-                self.searchFriendsBar.text = "NO USERS WERE FOUND WITH THAT USERNAME"
+                print("sukme")
             }
             else{
                  uid = friendFound[0].uid
