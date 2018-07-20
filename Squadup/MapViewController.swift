@@ -43,16 +43,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
-    //function that fetches the friends coordinates in firebase.
-    //    var friendsLat: CLLocationDegrees
-    //    var friendsLon: CLLocationDegrees
-    //    @objc func fetchFriendsCoordinates(){
-    //
-    //    }
-    
-    
-    
-    
     
     
     
@@ -82,11 +72,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
 
-        
-        
-        
-        
-        
         
         
         
@@ -142,7 +127,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
             //forloop searching
-            var uid: User
+            var uid: String = ""
             database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
                 
                 var friends = [User]()
@@ -160,17 +145,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.searchFriendsBar.text = "NO USERS WERE FOUND WITH THAT USERNAME"
                 }
                 else{
-                    uid = friendFound[0]
+                    uid = friendFound[0].uid
                 }
             });
-            
-            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
+            var friendLat = database.child("users").child(uid).value(forKey: "latidude")
+            var friendLon = database.child("users").child(uid).value(forKey: "longitude")
+            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(friendLat as! CLLocationDegrees, friendLon as! CLLocationDegrees)
             let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
             mapObject.setRegion(region, animated: true)
             let friendAnnotation = MKPointAnnotation()
             friendAnnotation.coordinate = location
-            friendAnnotation.title = "YOUR FRIEND"
+            friendAnnotation.title = database.child("users").child(uid).value(forKey: "username") as! String
             friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
             mapObject.addAnnotation(friendAnnotation)
         }
