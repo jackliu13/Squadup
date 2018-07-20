@@ -18,21 +18,29 @@ class User: Codable {
     
     let uid: String
     let username: String
+    let latitude: Double
+    let longitude: Double
     private static var _current: User?
     // MARK: - Init
     
-    init(uid: String, username: String) {
+    init(uid: String, username: String, latitude: Double, longitude: Double) {
         self.uid = uid
         self.username = username
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
-            let username = dict["username"] as? String
+            let username = dict["username"] as? String,
+        let latitude = dict["latitude"] as? Double,
+        let longitude = dict["longitude"] as? Double
             else { return nil }
         
         self.uid = snapshot.key
         self.username = username
+        self.latitude = latitude
+        self.longitude = longitude
     }
     
     static var current: User {
