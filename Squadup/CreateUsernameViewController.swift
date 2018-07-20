@@ -31,8 +31,11 @@ class CreateUsernameViewController: UIViewController {
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController")
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
-            
         }
+        
+        self.view.endEditing(true)
+        
+        
         
         //Create firebase database entry : Initializes username and lat/long
 //        let database = Database.database().reference()
