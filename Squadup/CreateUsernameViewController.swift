@@ -26,11 +26,7 @@ class CreateUsernameViewController: UIViewController {
             guard let user = user else { return }
             
             User.setCurrent(user, writeToUserDefaults: true)
-            let storyboard = UIStoryboard(name: "Main", bundle: .main)
-            
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "MapViewController")
-            self.view.window?.rootViewController = initialViewController
-            self.view.window?.makeKeyAndVisible()
+            self.performSegue(withIdentifier: "ToMapView", sender: self)
         }
         
         self.view.endEditing(true)
