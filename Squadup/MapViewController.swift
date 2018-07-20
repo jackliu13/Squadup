@@ -142,29 +142,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
             //forloop searching
-            let uid: String
+            var uid: User
             database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
                 
-                var users = [User]()
+                var friends = [User]()
                 for temp in snapshot.childSnapshot(forPath: "users").children {
                     
-                    var user = User(snapshot: temp as! DataSnapshot)
-                    users.append(user!)
+                    var friend = User(snapshot: temp as! DataSnapshot)
+                    friends.append(friend!)
                 }
                 
-                let userFound = users.filter({ (user) -> Bool in
+                let friendFound = friends.filter({ (user) -> Bool in
                     user.username == self.searchFriendsBar.text
                 })
                 
-                if userFound.count == 0{
-                    //didn't find any
+                if friendFound.count == 0{
+                    self.searchFriendsBar.text = "NO USERS WERE FOUND WITH THAT USERNAME"
                 }
                 else{
-                    //found some
+                    uid = friendFound[0]
                 }
-                
-                
-                
             });
             
             let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(37.748116, -122.432059)
