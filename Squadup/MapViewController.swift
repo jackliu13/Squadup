@@ -26,13 +26,57 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let database = Database.database().reference()
     let userID = Auth.auth().currentUser!.uid
     //function that updates the users coordinates in firebase. We will try to access these coordinates with a separate function
-    @objc func updateUserCoordinates(){
+    
+    @objc func updateAndFind(){
+        updateUserCoordinates()
+        viewFriendAnnotation()
+    }
+    func updateUserCoordinates(){
         
         let userLat = mapObject.userLocation.coordinate.latitude
         database.child("users").child(userID).child("latitude").setValue(userLat)
         
         let userLon = mapObject.userLocation.coordinate.longitude
         database.child("users").child(userID).child("longitude").setValue(userLon)
+    }
+    
+    func viewFriendAnnotation(){
+        let friendUsername = searchFriendsBar.text
+        
+        
+        //forloop searching
+        var uid: String = ""
+        database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
+            
+            var friends = [User]()
+            for temp in snapshot.childSnapshot(forPath: "users").children {
+                
+                var friend = User(snapshot: temp as! DataSnapshot)
+                friends.append(friend!)
+            }
+            
+            let friendFound = friends.filter({ (user) -> Bool in
+                user.username == self.searchFriendsBar.text
+            })
+            
+            if friendFound.count == 0{
+                self.searchFriendsBar.text = "NO USERS WERE FOUND WITH THAT USERNAME"
+            }
+            else{
+                uid = friendFound[0].uid
+            }
+        });
+        var friendLat = database.child("users").child(uid).value(forKey: "latidude")
+        var friendLon = database.child("users").child(uid).value(forKey: "longitude")
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(friendLat as! CLLocationDegrees, friendLon as! CLLocationDegrees)
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        mapObject.setRegion(region, animated: true)
+        let friendAnnotation = MKPointAnnotation()
+        friendAnnotation.coordinate = location
+        friendAnnotation.title = database.child("users").child(uid).value(forKey: "username") as! String
+        friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
+        mapObject.addAnnotation(friendAnnotation)
     }
     
     func fetchUser(){
@@ -97,22 +141,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapObject.showsUserLocation = true //Shows the blinking dot -> maybe we can customize it so friends have different colors to differentiate them
         
         //Converts address string to a coordinate variable
-        let geocoder = CLGeocoder()
-        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
-        geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
-            placemarks, error in
-            let placemark = placemarks?.first
-            let lat = placemark?.location?.coordinate.latitude
-            let lon = placemark?.location?.coordinate.longitude
-            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
-            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
-        }
+//        let geocoder = CLGeocoder()
+//        var destinationAddress: CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.28277, -157.829444)
+//        geocoder.geocodeAddressString("135 Waverly Place, Mountain View, CA") {
+//            placemarks, error in
+//            let placemark = placemarks?.first
+//            let lat = placemark?.location?.coordinate.latitude
+//            let lon = placemark?.location?.coordinate.longitude
+//            destinationAddress = CLLocationCoordinate2DMake(lat!, lon!)
+//            print("Lat: \(String(describing: lat)), Lon: \(String(describing: lon))")
+//        }
         
        
         
         //Constant update of location with use of a timer
         var gameTimer: Timer!
-        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserCoordinates), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateAndFind), userInfo: nil, repeats: true)
         //stops the timer
         //gameTimer.invalidate()
         
@@ -120,49 +164,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
-    
+        @IBOutlet weak var searchFriendsBar: UITextField!
     @IBAction func searchEntered(_ sender: Any) {
-        func viewFriendAnnotation(){
-            let friendUsername = searchFriendsBar.text
-            
-            
-            //forloop searching
-            var uid: String = ""
-            database.child(byAppendingPath: "users").observeSingleEvent(of: .value, with: { snapshot in
-                
-                var friends = [User]()
-                for temp in snapshot.childSnapshot(forPath: "users").children {
-                    
-                    var friend = User(snapshot: temp as! DataSnapshot)
-                    friends.append(friend!)
-                }
-                
-                let friendFound = friends.filter({ (user) -> Bool in
-                    user.username == self.searchFriendsBar.text
-                })
-                
-                if friendFound.count == 0{
-                    self.searchFriendsBar.text = "NO USERS WERE FOUND WITH THAT USERNAME"
-                }
-                else{
-                    uid = friendFound[0].uid
-                }
-            });
-            var friendLat = database.child("users").child(uid).value(forKey: "latidude")
-            var friendLon = database.child("users").child(uid).value(forKey: "longitude")
-            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(friendLat as! CLLocationDegrees, friendLon as! CLLocationDegrees)
-            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
-            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-            mapObject.setRegion(region, animated: true)
-            let friendAnnotation = MKPointAnnotation()
-            friendAnnotation.coordinate = location
-            friendAnnotation.title = database.child("users").child(uid).value(forKey: "username") as! String
-            friendAnnotation.subtitle = "THIS IS THE LOCATION OF YOUR FRIEND"
-            mapObject.addAnnotation(friendAnnotation)
-        }
+        viewFriendAnnotation()
     }
-    @IBOutlet weak var searchFriendsBar: UITextField!
-    
+
     
     
     
